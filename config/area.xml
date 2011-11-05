@@ -1,0 +1,49 @@
+<areas>
+<zone id="1" name="北京">
+    <area id="10001" name="海淀"/>
+    <area id="10002" name="朝阳"/>
+</zone>
+
+<zone id="2" name="上海">
+    <area id="20001" name="黄埔"/>
+    <area id="20002" name="静安"/>
+</zone>
+
+<zone id="3" name="重庆">
+	<area id="30001" name="渝中"/>
+	<area id="30002" name="江北"/>
+	<area id="30003" name="沙坪坝"/>
+	<area id="30004" name="九龙坡"/>
+	<area id="30005" name="渝北"/>
+	<area id="30006" name="北碚"/>
+	<area id="30007" name="南岸"/>
+	<area id="30008" name="巴南"/>
+	<area id="30009" name="大渡口"/>
+</zone>
+
+<zone id="4" name="四川">
+	<area id="40001" name="成都"/>
+	<area id="40002" name="绵阳"/>
+	<area id="40003" name="泸州"/>
+	<area id="40004" name="雅安"/>
+</zone>
+
+<zone id="5" name="天津">
+    <area id="50001" name="和平"/>
+    <area id="50002" name="河东"/>
+    <area id="50003" name="河西"/>
+</zone>
+
+<zone id="100" name="美国">
+    <area id="1000001" name="旧金山/湾区"/>
+    <area id="1000002" name="西雅图"/>
+    <area id="1000003" name="洛杉矶"/>
+    <area id="1000004" name="纽约"/>
+    <area id="1000005" name="波士顿"/>
+    <area id="1000006" name="芝加哥"/>
+    <area id="1000007" name="休士顿"/>
+    <area id="1000008" name="华盛顿特区"/>
+</zone>
+
+
+</areas>
