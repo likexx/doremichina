@@ -2,6 +2,6 @@
   require_once('./class/registration.php');
   
   $registration = new Registration();
-  $result = $registration->registerUserBasicInfo();
+  $result = $registration->updateUserBasicInfo();
   echo $result;
 ?>

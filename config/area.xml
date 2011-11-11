@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <areas>
 <zone id="1" name="北京">
     <area id="10001" name="海淀"/>
@@ -44,6 +45,4 @@
     <area id="1000007" name="休士顿"/>
     <area id="1000008" name="华盛顿特区"/>
 </zone>
-
-
 </areas>

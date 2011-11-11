@@ -1,5 +1,7 @@
 var GLOBAL = {
 
+USERMENU_DEFAULT_TEXT: "<span id='login_error' style='color:red;'></span>用户名<input id='login_username' type='text'> 密码<input id='login_password' type='password'> <input onclick='REGISTRATION.login();' type='button' value='登录'>  | <span onclick='PAGE.showRegistration();' style='cursor:pointer;'>快速加入</span>",
+
 set: function(key, value) {
    this[key] = value;
 },
@@ -13,8 +15,16 @@ getArea: function(areaId) {
    return this.get('AREA_'+areaId);
 },
 
+getZone: function(zoneId) {
+	
+	var zones = this.get('ZONE_LIST');
+    var zone = zones[zoneId];
+    return zone;
+},
+
 getSpeciality: function(id) {
-   return this.get('SPECIALITY_' + id);
+	var specialities = this.get("SPECIALITIES");
+    return specialities[id];
 },
 
 getAreas: function(zoneId) {
@@ -23,46 +33,24 @@ getAreas: function(zoneId) {
     return zone.areas;
 },
 
-teachers: {},
-
-setTeacher: function(teacher) {
-
-    var areaId = teacher.areaId;
-
-    if (this.teachers[areaId] == null) {
-        this.teachers[areaId] = [];
-    }
-    
-    this.teachers[areaId].push(teacher);
-},
-
-getTeachers: function(areaId) {
-    console.log('get teachers in area: ' + areaId);
-    if (this.teachers[areaId] == null) {
-        this.teachers[areaId] = [];
-    }
-    
-    return this.teachers[areaId];
-
-}
-
-
 };
-
-
 
 function initPage() {
 
 	var userId = GLOBAL.get('userId');
-		
+
 	if (userId<1) {
-	   $('#DIV_USER_MENU').css("display", "inline");
-	   $('#DIV_USER_MENU').css("visibility", "visible");
+	   $('#DIV_USER_INFO_UPDATE').css("display", "inline");
+	   $('#DIV_USER_INFO_UPDATE').css("visibility", "visible");
+	} else {
+		
+		PAGE.showLoggedInUserMenu();
 	}
 	
 	loadAreaData();
 	loadOccupations();
 	loadEducations();
+	loadSpecialities();
 	
 }
 
@@ -76,10 +64,10 @@ function loadAreaData() {
 
             var zoneList={};
 
-			$(xml).find('zone').each(function(){
-			    var id= $(this).attr('id');
+            $(xml).find('zone').each(function(){
+				var id= $(this).attr('id');
 			    var name = $(this).attr('name');
-			    
+
 			    var areas = {};
 			    
 			    $(this).find('area').each(function() {
@@ -154,3 +142,25 @@ function loadEducations() {
 
 }
 
+function loadSpecialities() {
+    $.ajax({
+        type: "GET",
+        url: "config/specialities.xml",
+        dataType: "xml",
+        success: function(xml) {
+
+            var specialities={};
+
+            $(xml).find('speciality').each(function(){
+                var id= $(this).attr('id');
+                var name = $(this).attr('name');
+                
+                specialities[id] = name;
+            });
+            
+            GLOBAL.set('SPECIALITIES',specialities);
+            
+        }
+    });
+
+}
